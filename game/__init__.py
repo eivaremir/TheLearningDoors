@@ -7,6 +7,8 @@ from .textures import textures
 from .entities.voxel import Voxel
 from .entities.grass import Grass
 
+from .entities.hand import Hand
+
 class Sky(Entity):
     def __init__(self):
         super().__init__(
@@ -25,4 +27,4 @@ for z in range(30):
 
 player = FirstPersonController()
 sky = Sky()
-
+hand = Hand()
