@@ -5,6 +5,7 @@ app = Ursina()
 
 from .textures import textures
 from .entities.voxel import Voxel
+from .entities.grass import Grass
 
 class Sky(Entity):
     def __init__(self):
@@ -17,9 +18,9 @@ class Sky(Entity):
         )
 
 
-for z in range(20):
-    for x in range(20):
-        voxel = Voxel(position=(x,0,z))
+for z in range(30):
+    for x in range(30):
+        voxel = Grass(position=(x,0,z))
         
 
 player = FirstPersonController()
