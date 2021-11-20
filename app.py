@@ -1,8 +1,4 @@
-from ursina import *
-
-
-app = Ursina()
-
+from game import app
 
 
 
