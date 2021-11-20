@@ -6,6 +6,8 @@ app = Ursina()
 from .textures import textures
 from .entities.voxel import Voxel
 
+from .entities.hand import Hand
+
 class Sky(Entity):
     def __init__(self):
         super().__init__(
@@ -24,4 +26,4 @@ for z in range(20):
 
 player = FirstPersonController()
 sky = Sky()
-
+hand = Hand()
