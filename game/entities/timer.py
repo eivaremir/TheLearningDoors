@@ -6,16 +6,16 @@ import time
 
 class Timer(Text):
     
-    def __init__(self,seconds=5):
+    def __init__(self,callback=None,seconds=5):
         super().__init__(
         
             text = str(seconds),
             position = (0.60,0.47), 
             background= True,
-            callback = True
+            
         )
         self.seconds=seconds
-        #self.callback = callback
+        self.callback = callback
         
         # thread self.update
     def updateTimer(self):
@@ -25,7 +25,7 @@ class Timer(Text):
             self.text = str(self.seconds)
             time.sleep(1)
             self.seconds = self.seconds-1
-        self.callback(False)      
+        #self.callback(False)      
             
     def start(self):
         thread = threading.Thread(target=self.updateTimer)

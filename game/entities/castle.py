@@ -45,6 +45,7 @@ class Castle():
 
         self.generate_entrance()
         self.generate_start_game()
+        self.generate_congrats()
 
     def upgrade_level(self,delay=1.7):
         from .. import player 
@@ -58,7 +59,7 @@ class Castle():
         thread = threading.Thread(target=move_player,args=(delay,))
         thread.start()
     def generate_congrats(self):
-        c = Congrats(self.levels)
+        c = Congrats(len(self.levels))
     def generate_level(self,level,l):
         a = 1
         delta = (LEVELS_SIZE -1) / len(level["answers"])

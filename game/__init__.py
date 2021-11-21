@@ -9,7 +9,7 @@ from .entities.grass import Grass
 from .entities.castle import Castle
 from .entities.brick import Brick
 from .entities.timer import Timer
-
+from .entities.window import Window
 
 from .config import Z_LIMITS 
 from .config import X_LIMITS 
@@ -30,7 +30,7 @@ class Sky(Entity):
 
 
         
-
+window = Window(position=(0,2,0))
 
 sky = Sky()
 
@@ -45,14 +45,9 @@ for z in range(Z_LIMITS[0],Z_LIMITS[1]+1):
 #Generate the castle with the levels
 castle = Castle(levels=levels)
 
-<<<<<<< HEAD
-#Set the player to the starting position
-player.set_position([0,5,-10])
+
 
 #player.rotation_y = -95
-=======
-
->>>>>>> 9817850f6ec0839b5b56877982d06c9228e50230
 
 seconds = 5
 
@@ -63,6 +58,6 @@ timer.start()
 
 player = FirstPersonController()
 #Set the player to the starting position
-player.set_position([0,8,-10])
+player.set_position([0,8,-7])
 hand = Hand()
 
