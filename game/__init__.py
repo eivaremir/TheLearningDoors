@@ -56,6 +56,6 @@ timer.start()
 
 player = FirstPersonController()
 #Set the player to the starting position
-player.set_position([0,8,-10])
+player.set_position([0,20,-10])
 hand = Hand()
 
