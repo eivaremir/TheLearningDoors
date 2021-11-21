@@ -95,6 +95,7 @@ class Castle():
                     position=Vec3((CASTLE_WIDTH-1) / 2, (LEVELS_SIZE-1) + delta_y, self.DEPTH-.6), is_answer=answer.get("answer", False))
                 #position = Vec3(0,5,0),is_answer=True)
             else:
+                print(answer)
                 qb = QuestionBtn(
                     lambda x:  self.upgrade_level() if x else None,
                     text=answer["value"],
