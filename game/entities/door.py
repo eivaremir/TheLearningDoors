@@ -1,5 +1,8 @@
 from ursina import *
 
+door_open_sound = Audio('assets/sounds/DoorOpen.mp3', loop=False, autoplay=False)
+door_close_sound = Audio('assets/sounds/DoorClose.mp3', loop=False, autoplay=False)
+
 class Door(Button):
     """
     Door is a button that opens and closes.
@@ -30,8 +33,11 @@ class Door(Button):
                     self.initial_position.x + self.scale.x / 2,
                     self.initial_position.y,
                     self.initial_position.z + self.scale.x / 2)
+                door_open_sound.play()
+
             elif key == 'left mouse down' and self.open:
                 # close door
                 self.open = False
                 self.rotation = Vec3(0, 0, 0)
                 self.position = self.initial_position
+                door_close_sound.play()
