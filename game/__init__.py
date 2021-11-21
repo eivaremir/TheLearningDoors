@@ -1,3 +1,4 @@
+from ursina import vec3
 from .levels import get_questions
 from ursina import *
 from ursina.prefabs.first_person_controller import FirstPersonController
@@ -14,7 +15,7 @@ from .entities.window import Window
 
 from .config import Z_LIMITS 
 from .config import X_LIMITS 
-
+from .config import CASTLE_DEPTH
 from .entities.hand import Hand
 
 
@@ -29,7 +30,7 @@ class Sky(Entity):
         )
 
 
-window = Window(position=(0, 2, 0))
+Entity(model = "quad", texture= "assets/descarga.png", position = (-3, 3, CASTLE_DEPTH *-1 -1), scale = Vec3(3.5,2,2) )
 
 sky = Sky()
 

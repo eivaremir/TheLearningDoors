@@ -9,4 +9,5 @@ textures = {
     "sky" : load_texture("../assets/skybox.png"),
     "door": load_texture("../assets/Door.png"),
     "window" : load_texture("../assets/Window.png"),
+    "pemdas" : "../assetes/es2-m-67-poster-din-a4-la-jerarquia-de-operaciones-pemdas_ver_2.jpg",
 }
