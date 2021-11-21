@@ -1,5 +1,4 @@
 from ursina import *
-from ursina.application import pause
 from ..textures import textures
 
 class Voxel(Button):
@@ -12,12 +11,4 @@ class Voxel(Button):
             texture =texture,
             color = color.color(0,0,random.uniform(.9,1)),
             scale = .5
-        )
-        
-    def input(self,key):
-        camera.position= Vec3(0,0,0)
-        if key == 'escape':
-            mouse.visible = True
-            mouse.locked = False
-            window.exit_button.visible = True
-            pause()
+        )    
