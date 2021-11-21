@@ -48,3 +48,7 @@ player.set_position([0,0,-10])
 
 
 hand = Hand()
+
+
+player.set_position([0,6,0])
+#import pdb; pdb.set_trace()
