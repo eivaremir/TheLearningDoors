@@ -8,6 +8,7 @@ from .entities.voxel import Voxel
 from .entities.grass import Grass
 from .entities.castle import Castle
 from .entities.brick import Brick
+from .entities.timer import Timer
 
 
 from .config import Z_LIMITS 
@@ -49,6 +50,7 @@ player.set_position([0,2,-10])
 
 player.rotation_y = -95
 
+timer = Timer()
 
 
 hand = Hand()
