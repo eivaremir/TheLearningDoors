@@ -1,5 +1,6 @@
 from ursina import *
 
+
 from .questionbtn import QuestionBtn, padding
 from .stone import Stone
 from .brick import Brick
@@ -11,6 +12,7 @@ from ..config import Z_LIMITS
 from ..config import X_LIMITS
 from ..config import LEVELS_SIZE
 from ..config import CASTLE_WIDTH
+from ..textures import textures
 import threading
 import time
 
@@ -32,12 +34,20 @@ class Castle():
                     is_delimited_region = (abs(z) == self.DEPTH or abs(x) == self.WIDTH)
                     is_the_door =  (y<= 3 and x>=0 and x<=1 and z == self.DEPTH * -1)
                     if is_delimited_region and not is_the_door:
-                        stone = Stone(position=(x,y,z))
+                        if y > LEVELS_SIZE and ((y+1) % (LEVELS_SIZE/2) == 0 ) :
+                            Entity(model = "quad", texture=textures["window"], position = (x,y-.2,z))
+                            
+                            
+                        else:
+                            stone = Stone(position=(x,y,z))
                     if x==1 and y==1 and z==self.DEPTH * -1:
                         door = Door(position=(.5,y,z),size = 2)
 
                     if y% LEVELS_SIZE == 0:
                         stone = Stone(position=(x,y,z))
+
+                    
+
         l = 1              
         for level in levels:
             self.generate_level(level,l)

@@ -8,5 +8,5 @@ textures = {
     "arm" : load_texture("../assets/arm_texture.png"),
     "sky" : load_texture("../assets/skybox.png"),
     "door": load_texture("../assets/Door.png"),
-    "window" : load_texture("../assets/Window_2.png"),
+    "window" : load_texture("../assets/Window.png"),
 }
