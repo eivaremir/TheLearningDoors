@@ -15,6 +15,7 @@ class Voxel(Button):
         )
         
     def input(self,key):
+        camera.position= Vec3(0,0,0)
         if key == 'escape':
             mouse.visible = True
             mouse.locked = False
