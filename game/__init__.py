@@ -46,9 +46,9 @@ for z in range(Z_LIMITS[0],Z_LIMITS[1]+1):
 castle = Castle(levels=levels)
 
 #Set the player to the starting position
-player.set_position([0,2,-10])
+player.set_position([0,5,-10])
 
-player.rotation_y = -95
+#player.rotation_y = -95
 
 timer = Timer()
 

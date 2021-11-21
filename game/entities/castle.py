@@ -5,6 +5,7 @@ from .stone import Stone
 from .brick import Brick
 from .floor import Floor
 from .door import Door
+from .congrats import Congrats
 from .initbtn import InitButton
 from ..config import Z_LIMITS
 from ..config import X_LIMITS
@@ -23,6 +24,7 @@ class Castle():
     current_player_level = 0
 
     def __init__(self,levels = [1,2,3,4,5,6]):
+        self.levels = levels
         self.HEIGHT = len(levels) * LEVELS_SIZE +1
         for z in range(self.DEPTH * -1,self.DEPTH +1 ):
             for x in range(self.WIDTH * -1 ,self.WIDTH + 1):
@@ -55,7 +57,8 @@ class Castle():
 
         thread = threading.Thread(target=move_player,args=(delay,))
         thread.start()
-
+    def generate_congrats(self):
+        c = Congrats(self.levels)
     def generate_level(self,level,l):
         a = 1
         delta = (LEVELS_SIZE -1) / len(level["answers"])
