@@ -26,13 +26,13 @@ class QuestionBtn(Button):
             #scale = Vec3(1.5, 1,.2),
             texture=img,
             scale =  Vec3(CASTLE_WIDTH-1, padding,.05),
-            text=text,
+            text= None if text is None else str(round(float(text),2)),
             color=color.white,
-            #text_color = color.black,
+            text_color = color.black,
             text_origin=Vec3(0, 0, -1),
         )
         #self.tooltip = Tooltip('exit')
-
+        print(self.text)
         self.callback = callback
         self.is_answer = is_answer
 
