@@ -1,5 +1,8 @@
 from ursina import *
 
+well_done_sound = Audio('assets/sounds/Well_Done_1.mp3', loop=False, autoplay=False)
+error_sound = Audio('assets/sounds/Error.mp3', loop=False, autoplay=False)
+
 class QuestionBtn(Button):
     """
     QuestionBtn
@@ -27,8 +30,10 @@ class QuestionBtn(Button):
         if self.hovered:
             if key == 'left mouse down' and self.is_answer:
                 self.color = color.green
+                well_done_sound.play()
                 self.callback(True)
 
             elif key == 'left mouse down' and not self.is_answer:
                 self.color = color.red
+                error_sound.play()
                 self.callback(False)
