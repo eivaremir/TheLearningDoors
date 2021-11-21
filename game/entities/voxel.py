@@ -16,7 +16,7 @@ class Voxel(Button):
         
     def input(self,key):
         if key == 'escape':
-        mouse.visible = True
-        mouse.locked = False
-        window.exit_button.visible = True
-        pause()
+            mouse.visible = True
+            mouse.locked = False
+            window.exit_button.visible = True
+            pause()
