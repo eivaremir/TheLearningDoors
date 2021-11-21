@@ -34,7 +34,8 @@ levels = [
         "answers": [
             {
                 "type": "Text",
-                "value": "Answer"
+                "value": "Answer",
+                "answer":True
             },
             {
                 "type": "Text",
