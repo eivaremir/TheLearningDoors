@@ -9,7 +9,7 @@ from .entities.grass import Grass
 from .entities.castle import Castle
 from .entities.brick import Brick
 from .entities.timer import Timer
-
+from .entities.window import Window
 
 from .config import Z_LIMITS 
 from .config import X_LIMITS 
@@ -30,8 +30,8 @@ class Sky(Entity):
 
 
         
+window = Window(position=(0,2,0))
 
-player = FirstPersonController()
 sky = Sky()
 
 for z in range(Z_LIMITS[0],Z_LIMITS[1]+1):
@@ -39,19 +39,25 @@ for z in range(Z_LIMITS[0],Z_LIMITS[1]+1):
         voxel = Grass(position=(x,0,z))
         is_delimited_region = (abs(z) == Z_LIMITS[1] or abs(x) ==  X_LIMITS[1])
         if is_delimited_region:
-            for y in range(1,4):
+            for y in range(1,3):
                 voxel = Brick(position=(x,y,z))
 
 #Generate the castle with the levels
 castle = Castle(levels=levels)
 
+
+
+#player.rotation_y = -95
+
+seconds = 5
+
+timer = Timer(seconds=6)
+timer.start()
+
+
+
+player = FirstPersonController()
 #Set the player to the starting position
-player.set_position([0,2,-10])
-
-player.rotation_y = -95
-
-timer = Timer()
-
-
+player.set_position([0,8,-7])
 hand = Hand()
 
