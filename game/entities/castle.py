@@ -1,6 +1,6 @@
 from ursina import *
 
-from game.entities.voxel import Voxel
+from .questionbtn import QuestionBtn, padding
 from .stone import Stone
 from .brick import Brick
 from .floor import Floor
@@ -8,12 +8,15 @@ from .door import Door
 from ..config import Z_LIMITS
 from ..config import X_LIMITS
 from ..config import LEVELS_SIZE
-
+from ..config import CASTLE_WIDTH
+import threading
+import time
 class Castle():
 
-    WIDTH = 6
+    WIDTH = CASTLE_WIDTH
     DEPTH = 4
-    
+    current_player_level = 0
+
     def __init__(self,levels = [1,2,3,4,5,6]):
         self.HEIGHT = len(levels) * LEVELS_SIZE
         for z in range(self.DEPTH * -1,self.DEPTH +1 ):
@@ -31,10 +34,38 @@ class Castle():
 
                     if y% LEVELS_SIZE == 0:
                         stone = Stone(position=(x,y,z))
-                    
-        
+        l = 1              
+          
+        for level in levels:
+            
+            self.generate_level(level,l)
+            
+            l+=1
 
         self.generate_entrance()
+
+
+    def upgrade_level(self):
+        from .. import player 
+        self.current_player_level +=1
+        
+        def move_player():
+
+            time.sleep(3)
+            player.set_position([0,player.y+LEVELS_SIZE,0])
+
+        thread = threading.Thread(target=move_player)
+        thread.start()
+
+    def generate_level(self,level,l):
+        a = 1
+        for answer in level["answers"]:
+            qb = QuestionBtn(
+                lambda x :  self.upgrade_level() if x else None ,
+                text=answer["value"],
+                position = Vec3((CASTLE_WIDTH-1) / 2,LEVELS_SIZE-(a*(padding))-1,self.DEPTH-.6),is_answer=answer.get("answer",False))
+                #position = Vec3(0,5,0),is_answer=True)
+            a+=1
 
     def generate_entrance(self):
 

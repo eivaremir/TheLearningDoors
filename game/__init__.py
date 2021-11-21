@@ -1,10 +1,6 @@
 from ursina import *
 from ursina.prefabs.first_person_controller import FirstPersonController
 
-
-
-
-
 app = Ursina()
 
 from .textures import textures
@@ -15,12 +11,12 @@ from .entities.brick import Brick
 from .entities.timer import Timer
 
 
-
 from .config import Z_LIMITS 
 from .config import X_LIMITS 
 
 from .entities.hand import Hand
 
+from .levels import levels
 class Sky(Entity):
     def __init__(self):
         super().__init__(
@@ -46,10 +42,13 @@ for z in range(Z_LIMITS[0],Z_LIMITS[1]+1):
             for y in range(1,4):
                 voxel = Brick(position=(x,y,z))
 
-        
-castle = Castle()
+#Generate the castle with the levels
+castle = Castle(levels=levels)
 
-player.set_position([0,0,-10])
+#Set the player to the starting position
+player.set_position([0,2,-10])
+
+player.rotation_y = -95
 
 timer = Timer()
 

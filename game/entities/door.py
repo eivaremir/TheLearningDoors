@@ -1,5 +1,5 @@
 from ursina import *
-
+from ..textures import textures
 door_open_sound = Audio('assets/sounds/DoorOpen.mp3', loop=False, autoplay=False)
 door_close_sound = Audio('assets/sounds/DoorClose.mp3', loop=False, autoplay=False)
 
@@ -14,7 +14,7 @@ class Door(Button):
         super().__init__(
             parent=scene,
             position=position,
-            texture="assets\Door.png",
+            texture=textures["door"],
             model='cube',
             scale=Vec3(size, 5, .3),
             color=rgb(135, 62, 35),

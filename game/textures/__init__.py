@@ -7,4 +7,5 @@ textures = {
     "dirt" : load_texture("../assets/dirt_block.png"),
     "arm" : load_texture("../assets/arm_texture.png"),
     "sky" : load_texture("../assets/skybox.png"),
+    "door": load_texture("../assets/Door.png")
 }
