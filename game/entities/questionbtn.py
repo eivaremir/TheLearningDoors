@@ -17,19 +17,19 @@ class QuestionBtn(Button):
         position: position of the button
         is_answer: if the button is an answer or not
     """
-    def __init__(self, callback, text='hello world!',position: Vec3 = (0, 0, 0), is_answer: bool = False) -> None:
+
+    def __init__(self, callback, img=None, text=None, position: Vec3 = (0, 0, 0), is_answer: bool = False) -> None:
         super().__init__(
             parent=scene,
             position=position,
             model ="cube",
             #scale = Vec3(1.5, 1,.2),
+            texture=img,
             scale =  Vec3(CASTLE_WIDTH-1, padding,.05),
             text=text,
-            #color=color.azure,
+            color=color.white,
             #text_color = color.black,
-            text_origin=Vec3(0, 0,-1),
-            
-            
+            text_origin=Vec3(0, 0, -1),
         )
         #self.tooltip = Tooltip('exit')
 
