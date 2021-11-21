@@ -7,26 +7,31 @@ from .floor import Floor
 from .door import Door
 from ..config import Z_LIMITS
 from ..config import X_LIMITS
+from ..config import LEVELS_SIZE
 
 class Castle():
 
-    WIDTH = 7
+    WIDTH = 6
     DEPTH = 4
-    LEVELS_SIZE = 6
+    
     def __init__(self,levels = [1,2,3,4,5,6]):
-        self.HEIGHT = len(levels) * self.LEVELS_SIZE
+        self.HEIGHT = len(levels) * LEVELS_SIZE
         for z in range(self.DEPTH * -1,self.DEPTH +1 ):
             for x in range(self.WIDTH * -1 ,self.WIDTH + 1):
                 for y in range(1,self.HEIGHT +1):
                     is_delimited_region = (abs(z) == self.DEPTH or abs(x) == self.WIDTH)
                     is_the_door =  (y<= 3 and x>=0 and x<=1 and z == self.DEPTH * -1)
                     if is_delimited_region and not is_the_door:
-                        #if y<4 and not (x>=-1 and x<=1) and z == self.DEPTH * -1:
+                        #pass
                         stone = Stone(position=(x,y,z))
                         #else:
                         #    stone = Stone(position=(x,y,z))
                     if x==1 and y==1 and z==self.DEPTH * -1:
                         door = Door(position=(.5,y,z),size = 2)
+
+                    if y% LEVELS_SIZE == 0:
+                        stone = Stone(position=(x,y,z))
+                    
         
 
         self.generate_entrance()

@@ -1,3 +1,3 @@
-
-Z_LIMITS = (-30,30)
-X_LIMITS = (-30,30)
+LEVELS_SIZE = 5
+Z_LIMITS = (-20,20)
+X_LIMITS = (-20,20)
