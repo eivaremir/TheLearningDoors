@@ -12,6 +12,7 @@ from .entities.voxel import Voxel
 from .entities.grass import Grass
 from .entities.castle import Castle
 from .entities.brick import Brick
+from .entities.timer import Timer
 
 
 
@@ -50,6 +51,7 @@ castle = Castle()
 
 player.set_position([0,0,-10])
 
+timer = Timer()
 
 
 hand = Hand()
