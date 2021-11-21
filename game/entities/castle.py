@@ -11,7 +11,7 @@ from ..config import LEVELS_SIZE
 
 class Castle():
 
-    WIDTH = 7
+    WIDTH = 6
     DEPTH = 4
     
     def __init__(self,levels = [1,2,3,4,5,6]):

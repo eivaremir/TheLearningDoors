@@ -14,6 +14,7 @@ from .entities.castle import Castle
 from .entities.brick import Brick
 
 
+
 from .config import Z_LIMITS 
 from .config import X_LIMITS 
 
@@ -39,6 +40,10 @@ sky = Sky()
 for z in range(Z_LIMITS[0],Z_LIMITS[1]+1):
     for x in range(X_LIMITS[0],X_LIMITS[1]+1):
         voxel = Grass(position=(x,0,z))
+        is_delimited_region = (abs(z) == Z_LIMITS[1] or abs(x) ==  X_LIMITS[1])
+        if is_delimited_region:
+            for y in range(1,4):
+                voxel = Brick(position=(x,y,z))
 
         
 castle = Castle()
@@ -49,6 +54,3 @@ player.set_position([0,0,-10])
 
 hand = Hand()
 
-
-player.set_position([0,6,0])
-#import pdb; pdb.set_trace()
