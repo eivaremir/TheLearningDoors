@@ -14,7 +14,7 @@ class Voxel(Button):
             scale = .5
         )
         
-    def input(self,key):
+    def input(key):
         if key == 'escape':
             mouse.visible = True
             mouse.locked = False
