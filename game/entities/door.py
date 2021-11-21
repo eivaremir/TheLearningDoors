@@ -14,7 +14,7 @@ class Door(Button):
         super().__init__(
             parent=scene,
             position=position,
-            texture=\assets\Door.png,
+            texture="assets\Door.png",
             model='cube',
             scale=Vec3(size, 5, .3),
             color=rgb(135, 62, 35),
