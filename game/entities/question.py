@@ -20,10 +20,11 @@ class Question(Button):
             parent=scene,
             position=position,
             model="cube",
-            scale=Vec3(1, 1, 1),
+            scale= Vec3(1, 1, 1) if text is None else Vec3(5,5, .05),
             texture=img,
             color=color.white,
             text=text,
+            text_color=color.black,
             text_origin=Vec3(0, 0, -1),
             highlight_color=color.white
         )

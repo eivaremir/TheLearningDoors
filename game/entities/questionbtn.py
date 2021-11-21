@@ -28,7 +28,7 @@ class QuestionBtn(Button):
             scale =  Vec3(CASTLE_WIDTH-1, padding,.05),
             text=text,
             color=color.white,
-            #text_color = color.black,
+            text_color = color.black,
             text_origin=Vec3(0, 0, -1),
         )
         #self.tooltip = Tooltip('exit')

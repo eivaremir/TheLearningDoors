@@ -16,7 +16,8 @@ from .config import Z_LIMITS
 from .config import X_LIMITS 
 
 from .entities.hand import Hand
-
+import json
+from .levels import levels
 
 class Sky(Entity):
     def __init__(self):
@@ -42,7 +43,8 @@ for z in range(Z_LIMITS[0], Z_LIMITS[1]+1):
                 voxel = Brick(position=(x, y, z))
 
 #Generate the castle with the levels
-castle = Castle(levels=get_questions())
+#castle = Castle(levels=get_questions())
+#castle = Castle(levels=json.loads("./data.json"))
 
 
 #player.rotation_y = -95
