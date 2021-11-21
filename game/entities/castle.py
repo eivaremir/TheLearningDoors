@@ -2,6 +2,7 @@ from ursina import *
 
 
 from .questionbtn import QuestionBtn, padding
+from .question import Question
 from .stone import Stone
 from .brick import Brick
 from .floor import Floor
@@ -15,6 +16,7 @@ from ..config import CASTLE_WIDTH
 from ..textures import textures
 import threading
 import time
+import random
 
 
 well_done_sound = Audio('assets/sounds/Well_Done_1.mp3', loop=False, autoplay=False)
@@ -73,13 +75,30 @@ class Castle():
     def generate_level(self,level,l):
         a = 1
         delta = (LEVELS_SIZE -1) / len(level["answers"])
-        delta_y = l * LEVELS_SIZE # - delta
-        for answer in level["answers"]:
+        delta_y = l * LEVELS_SIZE  # - delta
 
-            qb = QuestionBtn(
-                lambda x :  self.upgrade_level() if x else None ,
-                text=answer["value"],
-                position = Vec3((CASTLE_WIDTH-1) / 2, (LEVELS_SIZE-1)+ delta_y,self.DEPTH-.6),is_answer=answer.get("answer",False))
+        if level["question"]["type"] == "Image":
+            question = Question(img=level["question"]["value"], position=Vec3(
+                (CASTLE_WIDTH)-7, (LEVELS_SIZE)*l+(LEVELS_SIZE/2), self.DEPTH-.6))
+        else:
+            question = Question(text=level["question"]["value"], position=Vec3(
+                (CASTLE_WIDTH)-7, (LEVELS_SIZE)*l+(LEVELS_SIZE/2), self.DEPTH-.6))
+
+        randomized_answers = level["answers"].copy()
+        random.shuffle(randomized_answers)
+
+        for answer in randomized_answers:
+            if answer["type"] == "Image":
+                qb = QuestionBtn(
+                    lambda x:  self.upgrade_level() if x else None,
+                    img=answer["value"],
+                    position=Vec3((CASTLE_WIDTH-1) / 2, (LEVELS_SIZE-1) + delta_y, self.DEPTH-.6), is_answer=answer.get("answer", False))
+                #position = Vec3(0,5,0),is_answer=True)
+            else:
+                qb = QuestionBtn(
+                    lambda x:  self.upgrade_level() if x else None,
+                    text=answer["value"],
+                    position=Vec3((CASTLE_WIDTH-1) / 2, (LEVELS_SIZE-1) + delta_y, self.DEPTH-.6), is_answer=answer.get("answer", False))
                 #position = Vec3(0,5,0),is_answer=True)
             delta_y = delta_y - delta
             a+=1
